@@ -1,0 +1,28 @@
+.scroller {
+    max-height: calc(100vh - 144px);
+    overflow-y: scroll;
+}
+
+.product-status {
+    padding: 0;
+    width: 126px;
+    max-height: 32px;
+    line-height: 32px;
+    display: inline-block;
+    background-color: #f6f6f6;
+    color: #333333;
+    letter-spacing: .51px;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 40px;
+}
+
+.product-status.paid {
+    color: #13800D;
+    background-color: honeydew;
+}
+
+.product-status.checking {
+    color: #945E12;
+    background-color: #fffaeb;
+}

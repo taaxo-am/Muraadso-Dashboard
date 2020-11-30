@@ -1,0 +1,17 @@
+.left-panel {
+    background: red url("./login-left-panel.png") no-repeat;
+    background-size: 100%;
+}
+
+.login-header {
+    color: #183B56;
+    font-family: "Spartan", sans-serif;
+    letter-spacing: 3px;
+    line-height: 3.5rem;
+    font-weight: 600;
+}
+
+.login-form > div {
+    min-width: 40%;
+    text-align: center;
+}
