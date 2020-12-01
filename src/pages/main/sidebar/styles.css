@@ -1,8 +1,12 @@
 .sidebar {
-    width: 82px;
+    width: 80px;
     background: red;
     border-right: 1px solid #d20303;
     padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
 }
 
 .sidebar .bars {

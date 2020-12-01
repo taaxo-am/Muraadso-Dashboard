@@ -1,83 +1,72 @@
-import React from 'react';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import React, {useEffect, useState} from 'react';
+import {Router, Switch, Route, useHistory, useLocation} from "react-router";
 import './styles.css'
 
-import Sidebar from "./sidebar/Sidebar";
-import QuickDetails from "./QuickDetails";
-import Toolbar from "./Toolbar";
-import Registration from "./registration/Registration";
 import Login from "../login/Login";
-import Admin from "./users/Admin";
-import UsersList from "./users/UsersList";
-import Iskubedel from "./iskubedel/Iskubedel";
+import Sidebar from "./sidebar/Sidebar";
+import Toolbar from "./Toolbar";
 import Home from "./home/Home";
+import Registration from "./registration/Registration";
+import Iskubedel from "./iskubedel/Iskubedel";
 import UIibin from "./u-iibin/UIibin";
+import Admin from "./users/Admin";
+import KaIibsasho from "./ka-iibsasho/KaIibsasho";
 
 const Main = () => {
+
+    let history = useHistory();
+    const location = useLocation();
+    const pathName = location.pathname;
+
+    const [route, setRoute] = useState('Home')
+
+    useEffect(() => {
+        console.log(pathName.split('/'))
+        setRoute(pathName.split('/')[2])
+    }, [pathName]);
+
     return (
-        <Router>
+        <Router history={history}>
             <Switch>
                 <Route exact path='/'>
                     <Login/>
                 </Route>
                 <div className='container-fluid d-flex flex-md-row flex-column vh-100 p-0'>
                     <Sidebar/>
+
                     <div className='d-flex flex-column h-100 bg-light center'>
-                        <Toolbar/>
 
-                        {/*<nav className='bg-white ml-4' aria-label="breadcrumb">*/}
-                        {/*    <ol className="breadcrumb bg-white m-0">*/}
-                        {/*        <li className="breadcrumb-item"><a href="#">Home</a></li>*/}
-                        {/*        <li className="breadcrumb-item"><a href="#">Library</a></li>*/}
-                        {/*        <li className="breadcrumb-item active" aria-current="page">Data</li>*/}
-                        {/*    </ol>*/}
-                        {/*</nav>*/}
+                        <Toolbar route={route}/>
 
-                        <section className="row h-100 pl-2 pr-2 m-0">
+                        <section className="section row m-0 pl-2 pr-2">
                             <Switch>
 
-                                <Route path='/main/data'>
-                                    <Home />
+                                <Route path='/main/home'>
+                                    <Home/>
                                 </Route>
 
                                 <Route path='/main/registration'>
-                                    <div className="col-lg-8 col-md-12 p-4">
-
-                                        <Registration/>
-
-                                    </div>
-
-                                    <div className="col-lg-4 col-md-12 p-4">
-                                        <QuickDetails/>
-                                    </div>
-
+                                    <Registration/>
                                 </Route>
 
-                                <Route path='/main/iskubedel'>
-                                    <div className="col-12 p-4">
-
-                                        <Iskubedel />
-                                    </div>
+                                <Route path='/main/prices'>
+                                    <Registration/>
                                 </Route>
 
-                                <Route path='/main/uiibin'>
-                                    <div className="col-12 p-4">
+                                <Route path='/main/isku-bedel'>
+                                    <Iskubedel/>
+                                </Route>
 
-                                        <UIibin />
-                                    </div>
+                                <Route path='/main/u-iibin'>
+                                    <UIibin/>
+                                </Route>
+
+                                <Route path='/main/ka-iibsasho'>
+                                    <KaIibsasho/>
                                 </Route>
 
                                 <Route path='/main/admin'>
-                                    <div className="col-lg-8 col-md-12 p-4">
-
-                                        <Admin/>
-
-                                    </div>
-
-                                    <div className="col-lg-4 col-md-12 p-4">
-                                        <UsersList/>
-                                    </div>
-
+                                    <Admin/>
                                 </Route>
 
                             </Switch>

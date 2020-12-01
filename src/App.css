@@ -3,3 +3,9 @@ tbody {
     color: #676767;
     font-family: "Roboto Medium", sans-serif;
 }
+
+i.lightHover:hover {
+    background-color: #cbcbcb;
+    border-radius: 30px;
+    cursor: pointer;
+}

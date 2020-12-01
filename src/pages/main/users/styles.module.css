@@ -1,0 +1,44 @@
+.abs {
+    position: absolute;
+    top: calc(38px + 1.5rem * 2) !important;
+    right: 1.5rem;
+    left: 1.5rem;
+    bottom: 1.5rem;
+}
+
+.avatar {
+    width: 64px;
+}
+
+.status {
+    width: 16px;
+    height: 16px;
+    bottom: 0;
+    right: 0;
+    background-color: #00d248;
+    border-radius: 100%;
+    position: absolute;
+    border: 3px solid white;
+}
+
+.status.statusOffline {
+    background-color: #ff0000 !important;
+}
+
+.username {
+    font-weight: 700;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+}
+
+.phone {
+    font-weight: 400;
+    font-size: 14px;
+    color: #808080
+}
+
+.location {
+    font-size: 14px;
+    color: #808080;
+    letter-spacing: 1px;
+}

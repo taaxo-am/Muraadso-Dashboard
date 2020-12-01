@@ -3,15 +3,17 @@ import DataTable from "../../../components/datatable/DataTable";
 import QuickDetails from "../QuickDetails";
 
 import products from "./products";
+import {Route} from "react-router-dom";
 
 const Home = () => {
+
     const columns = ['Products', 'Status', 'Sell Price']
 
     return (
         <>
-            <div className="col-lg-8 col-md-12 p-4">
-                <div className={`card shadow-sm h-100 w-100 p-0`}>
-                    <div className="card-header">Daily Entry</div>
+            <div className="col-lg-8 position-relative col-md-12">
+                <div className={`card abs shadow-sm`}>
+                    {/*<div className="card-header">Daily Entry</div>*/}
                     <div className="card-body p-0">
                         <DataTable rows={products} columns={columns}/>
                     </div>

@@ -26,7 +26,7 @@ const Login = () => {
                             </label>
                         </div>
                         <div className="form-group mt-4">
-                            <Link to='/main/data'>
+                            <Link to='/main/home'>
                                 <input type="submit" value='LOGIN' className='btn btn-danger w-50'/>
                             </Link>
                         </div>
