@@ -4,8 +4,7 @@ import './styles.css'
 const DataTable = ({rows, columns}) => {
 
     return (
-        <div className='scroller'>
-            <table className='table table-borderless h-75 table-hover'>
+            <table className='table table-borderless table-hover'>
                 <thead className='card-header text-center'>
                 {
                     columns.map(col => {
@@ -41,7 +40,6 @@ const DataTable = ({rows, columns}) => {
                 }
                 </tbody>
             </table>
-        </div>
     );
 };
 

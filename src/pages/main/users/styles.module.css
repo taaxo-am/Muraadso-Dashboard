@@ -1,11 +1,3 @@
-.abs {
-    position: absolute;
-    top: calc(38px + 1.5rem * 2) !important;
-    right: 1.5rem;
-    left: 1.5rem;
-    bottom: 1.5rem;
-}
-
 .avatar {
     width: 64px;
 }

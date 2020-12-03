@@ -11,6 +11,7 @@ import Iskubedel from "./iskubedel/Iskubedel";
 import UIibin from "./u-iibin/UIibin";
 import Admin from "./users/Admin";
 import KaIibsasho from "./ka-iibsasho/KaIibsasho";
+import Pricing from "./pricing/Pricing";
 
 const Main = () => {
 
@@ -19,6 +20,7 @@ const Main = () => {
     const pathName = location.pathname;
 
     const [route, setRoute] = useState('Home')
+    const sidebar = React.createRef()
 
     useEffect(() => {
         console.log(pathName.split('/'))
@@ -31,16 +33,19 @@ const Main = () => {
                 <Route exact path='/'>
                     <Login/>
                 </Route>
-                <div className='container-fluid d-flex flex-md-row flex-column vh-100 p-0'>
-                    <Sidebar/>
 
-                    <div className='d-flex flex-column h-100 bg-light center'>
+                <div className='wrapper d-flex'>
+                    <aside>
+                        <Sidebar sidebar={sidebar}/>
+                    </aside>
 
-                        <Toolbar route={route}/>
+                    <main className='flex-grow-1'>
+                        <header>
+                            <Toolbar sidebar={sidebar} route={route}/>
+                        </header>
 
-                        <section className="section row m-0 pl-2 pr-2">
+                        <section className="section row position-relative m-0">
                             <Switch>
-
                                 <Route path='/main/home'>
                                     <Home/>
                                 </Route>
@@ -49,8 +54,8 @@ const Main = () => {
                                     <Registration/>
                                 </Route>
 
-                                <Route path='/main/prices'>
-                                    <Registration/>
+                                <Route path='/main/pricing'>
+                                    <Pricing/>
                                 </Route>
 
                                 <Route path='/main/isku-bedel'>
@@ -68,11 +73,53 @@ const Main = () => {
                                 <Route path='/main/admin'>
                                     <Admin/>
                                 </Route>
-
                             </Switch>
                         </section>
-                    </div>
+                    </main>
                 </div>
+
+                {/*<div className='container-fluid d-flex flex-md-row flex-column vh-100 p-0'>*/}
+                {/*    <Sidebar/>*/}
+
+                {/*    <main className='d-flex flex-column h-100 bg-light center'>*/}
+
+                {/*        <Toolbar route={route}/>*/}
+
+                {/*<section className="section row m-0 pl-2 pr-2">*/}
+                {/*    <Switch>*/}
+
+                {/*        <Route path='/main/home'>*/}
+                {/*            <Home/>*/}
+                {/*        </Route>*/}
+
+                {/*        <Route path='/main/registration'>*/}
+                {/*            <Registration/>*/}
+                {/*        </Route>*/}
+
+                {/*        <Route path='/main/pricing'>*/}
+                {/*            <Pricing/>*/}
+                {/*        </Route>*/}
+
+                {/*        <Route path='/main/isku-bedel'>*/}
+                {/*            <Iskubedel/>*/}
+                {/*        </Route>*/}
+
+                {/*        <Route path='/main/u-iibin'>*/}
+                {/*            <UIibin/>*/}
+                {/*        </Route>*/}
+
+                {/*        <Route path='/main/ka-iibsasho'>*/}
+                {/*            <KaIibsasho/>*/}
+                {/*        </Route>*/}
+
+                {/*        <Route path='/main/admin'>*/}
+                {/*            <Admin/>*/}
+                {/*        </Route>*/}
+
+                {/*    </Switch>*/}
+                {/*</section>*/}
+                {/*    </main>*/}
+                {/*</div>*/}
             </Switch>
         </Router>
     );

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import ic_new_customer from "./img/ic_new_customer.png";
-import ic_awaiting_process from "./img/ic_awaiting_process.png";
-import ic_on_hold from "./img/ic_on_hold.png";
-import ic_not_paid from "./img/ic_not_paid.png";
-import ic_rejected from "./img/ic_rejected.png";
+import ic_new_customer from "../pages/main/img/ic_new_customer.png";
+import ic_awaiting_process from "../pages/main/img/ic_awaiting_process.png";
+import ic_on_hold from "../pages/main/img/ic_on_hold.png";
+import ic_not_paid from "../pages/main/img/ic_not_paid.png";
+import ic_rejected from "../pages/main/img/ic_rejected.png";
 
 const data = [
     {

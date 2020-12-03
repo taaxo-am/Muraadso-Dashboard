@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yub from 'yup'
 import './styles.css'
-import QuickDetails from "../QuickDetails";
+import QuickDetails from "../../../components/QuickDetails";
 import {Route} from "react-router-dom";
 
 const initialState = {
@@ -39,10 +39,9 @@ const Registration = () => {
     return (
         <>
             <div className="col-lg-8 col-md-12 p-4">
-
-                <div className='row w-100 h-auto m-0'>
+                <div className='d-flex flex-column flex-md-row w-100 m-0'>
                     <Formik initialValues={initialState} validationSchema={validationSchema} onSubmit={onSubmitForm1}>
-                        <div className={`card col shadow-sm mh-100 p-0 ${nextForm && 'card-disabled'}`}>
+                        <div className={`card w-100 shadow-sm mh-100 p-0 ${nextForm && 'card-disabled'}`}>
                             <div className='card-header'>Ka Qabashada P1</div>
                             <div className='card-body'>
                                 <Form className='pl-4 pr-4'>
@@ -115,7 +114,7 @@ const Registration = () => {
                         </div>
                     </Formik>
 
-                    <div className={`card col shadow-sm mh-100 ml-4 p-0 ${!nextForm && 'card-disabled'}`}>
+                    <div className={`card w-100 ml-md-4 mt-sm-4 mt-md-0 shadow-sm mh-100 p-0 ${!nextForm && 'card-disabled'}`}>
                         <div className='card-header'>Ka Qabashada P2</div>
                         <div className='card-body'>
                             <form className='pl-4 pr-4'>
@@ -163,7 +162,7 @@ const Registration = () => {
                                     </div>
                                 </div>
 
-                                <div className='d-flex justify-content-end m-3'>
+                                <div className='d-flex justify-content-center m-3'>
                                     <button className='btn btn-outline-danger'>Back</button>
                                     <button className='btn btn-outline-warning ml-4' type='reset'>Reset</button>
                                     <button className='btn btn-danger ml-4' onClick={handleNext}>Save & Finish</button>

@@ -1,6 +1,6 @@
 import React from 'react';
 import DataTable from "../../../components/datatable/DataTable";
-import QuickDetails from "../QuickDetails";
+import QuickDetails from "../../../components/QuickDetails";
 
 import products from "./products";
 import {Route} from "react-router-dom";
@@ -11,16 +11,15 @@ const Home = () => {
 
     return (
         <>
-            <div className="col-lg-8 position-relative col-md-12">
-                <div className={`card abs shadow-sm`}>
-                    {/*<div className="card-header">Daily Entry</div>*/}
-                    <div className="card-body p-0">
+            <div className="col-lg-4 col-md-12 order-md-10 p-md-4 p-3 pt-4">
+                <QuickDetails/>
+            </div>
+            <div className="col-lg-8 col-md-12 order-md-5 p-md-4 p-3 pt-4">
+                <div className={`card shadow-sm`}>
+                    <div className="card-body p-0" style={{overflowX: 'scroll', overflowY: 'scroll'}}>
                         <DataTable rows={products} columns={columns}/>
                     </div>
                 </div>
-            </div>
-            <div className="col-lg-4 col-md-12 p-4">
-                <QuickDetails/>
             </div>
         </>
     );

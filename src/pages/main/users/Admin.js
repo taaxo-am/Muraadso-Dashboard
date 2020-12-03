@@ -14,32 +14,45 @@ const Admin = () => {
 
     return (
         <>
-            <div className="col-lg-8 position-relative col-md-12 p-4">
-                <div className='d-flex justify-content-between pr-3 pl-3'>
-                    <div>
-                        <button className='btn btn-secondary' data-toggle="modal" data-target="#userModal">New User
-                        </button>
-                        <button className='btn btn-outline-secondary ml-3' data-toggle="modal"
-                                data-target="#manageUsersModal">Manage Users
-                        </button>
-                        <button className='btn btn-warning ml-3' data-toggle="modal" data-target="#showRoomModal">New
+            <div className="col-lg-8 order-5 col-md-12 p-4">
+
+                <div className='row m-0'>
+                    <div className='row col-12 col-md-6 m-0'>
+                        <button className='btn btn-danger' data-toggle="modal" data-target="#showRoomModal">New
                             Show Room
                         </button>
-                        <button className='btn btn-outline-danger ml-3'>Manage Show Rooms</button>
+                        <button className='btn btn-outline-danger ml-md-3'>Manage Show
+                            Rooms
+                        </button>
                     </div>
-                    <select className='form-control w-auto pr-5'>
-                        <option value="1">Last Week</option>
-                    </select>
+
+                    <div className='col-12 col-md-6 mt-4 mt-md-0 d-flex'>
+                        <select className='form-control ml-md-3'>
+                            <option value="1">-- Select Show Room --</option>
+                        </select>
+
+                        <select className='form-control ml-3'>
+                            <option value="1">Last Week</option>
+                        </select>
+                    </div>
+
                 </div>
-                <div className={`card ${Styles.abs} shadow-sm p-0`}>
-                    {/*<div className='card-header'>Daily Entry</div>*/}
+
+                <div className='card mt-4 shadow-sm '>
                     <div className='card-body p-0'>
                         <DataTable rows={products} columns={columns}/>
                     </div>
                 </div>
             </div>
 
-            <div className="col-lg-4 col-md-12 p-4">
+            <div className="col-lg-4 order-1 col-md-12 p-4">
+                <div className='mb-4'>
+                    <button className='btn btn-danger' data-toggle="modal" data-target="#userModal">New User
+                    </button>
+                    <button className='btn btn-outline-danger ml-3' data-toggle="modal"
+                            data-target="#manageUsersModal">Manage Users
+                    </button>
+                </div>
                 <UsersList/>
             </div>
 
@@ -115,17 +128,24 @@ const Admin = () => {
                                             return (
                                                 <div className='bg-light shadow-sm border rounded mt-2 mb-2 pb-3'>
                                                     <div className='row align-items-center pl-4 pr-4 pt-5 pb-1'>
-                                                        <div className='d-flex col-3 align-self-start justify-content-center'>
-                                                            <img className='border border-secondary rounded-circle w-50' src={user.avatar} alt=""/>
+                                                        <div
+                                                            className='d-flex col-3 align-self-start justify-content-center'>
+                                                            <img className='border border-secondary rounded-circle w-50'
+                                                                 src={user.avatar} alt=""/>
                                                         </div>
                                                         <div className="col-7 d-flex flex-column align-self-start">
-                                                            <h6 className={Styles.username}><i className='fa fa-user-alt mr-2' />{user.name}</h6>
-                                                            <p className={Styles.phone}><i className='fa fa-phone-alt mt-4 mr-2' />{user.phone}</p>
-                                                            <p className={Styles.location}><i className='fa fa-map-marker-alt mt-2 mr-2'/>{user.location}</p>
+                                                            <h6 className={Styles.username}><i
+                                                                className='fa fa-user-alt mr-2'/>{user.name}</h6>
+                                                            <p className={Styles.phone}><i
+                                                                className='fa fa-phone-alt mt-4 mr-2'/>{user.phone}</p>
+                                                            <p className={Styles.location}><i
+                                                                className='fa fa-map-marker-alt mt-2 mr-2'/>{user.location}
+                                                            </p>
                                                         </div>
-                                                        <div className='col-2 d-flex justify-content-around align-self-start'>
-                                                            <i className='fa fa-edit p-3 lightHover mt-1' />
-                                                            <i className='fas fa-trash p-3 lightHover mt-1' />
+                                                        <div
+                                                            className='col-2 d-flex justify-content-around align-self-start'>
+                                                            <i className='fa fa-edit p-3 lightHover mt-1'/>
+                                                            <i className='fas fa-trash p-3 lightHover mt-1'/>
                                                         </div>
                                                     </div>
                                                     <hr className='text-light bg-light'/>
