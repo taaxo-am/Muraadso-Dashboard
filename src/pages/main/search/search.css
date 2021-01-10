@@ -1,0 +1,9 @@
+.search-wrapper {
+  transition: 1s ease-out;
+  padding-top: 12rem;
+}
+.search-wrapper .card {
+  transition: all 1s ease-out;
+}
+
+/*# sourceMappingURL=search.css.map */

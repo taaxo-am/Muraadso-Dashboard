@@ -9,7 +9,7 @@ import UsersList from "./UsersList";
 
 import users from './users'
 
-const Admin = () => {
+const Index = () => {
     const columns = ['Products', 'Status', 'Sell Price']
 
     return (
@@ -211,4 +211,4 @@ const Admin = () => {
     );
 };
 
-export default Admin;
+export default Index;

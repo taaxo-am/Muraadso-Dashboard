@@ -9,9 +9,13 @@ import Home from "./home/Home";
 import Registration from "./registration/Registration";
 import Iskubedel from "./iskubedel/Iskubedel";
 import UIibin from "./u-iibin/UIibin";
-import Admin from "./users/Admin";
+import Index from "./users";
 import KaIibsasho from "./ka-iibsasho/KaIibsasho";
 import Pricing from "./pricing/Pricing";
+import Failed from "./more/Failed";
+import GeneralSearching from "./search/GeneralSearching";
+import QualityChecking from "./more/QualityChecking";
+import More from "./more/More";
 
 const Main = () => {
 
@@ -70,8 +74,16 @@ const Main = () => {
                                     <KaIibsasho/>
                                 </Route>
 
+                                <Route path='/main/more'>
+                                    <More/>
+                                </Route>
+
+                                <Route path='/main/general-search'>
+                                    <GeneralSearching/>
+                                </Route>
+
                                 <Route path='/main/admin'>
-                                    <Admin/>
+                                    <Index/>
                                 </Route>
                             </Switch>
                         </section>
@@ -113,7 +125,7 @@ const Main = () => {
                 {/*        </Route>*/}
 
                 {/*        <Route path='/main/admin'>*/}
-                {/*            <Admin/>*/}
+                {/*            <Index/>*/}
                 {/*        </Route>*/}
 
                 {/*    </Switch>*/}

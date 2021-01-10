@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/js/bootstrap.bundle.min'
 import avatar from './img/avatar.png'
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 
 const Toolbar = ({sidebar, route}) => {
     return (
@@ -14,6 +14,13 @@ const Toolbar = ({sidebar, route}) => {
                 <h3 className='ml-3 mb-0 title'>{route[0].toUpperCase() + route.slice(1)}</h3>
                 <div className='d-flex flex-grow-1 justify-content-end align-items-center mr-2'>
                     <div className='d-md-flex align-items-center d-none'>
+
+                        <NavLink to='/main/general-search' style={{color: 'grey'}}>
+                            <div className='notification mr-4'>
+                                <i className='fa fa-search'/>
+                            </div>
+                        </NavLink>
+
                         <div className='notification mr-4'>
                             <i className='fa fa-bell'/>
                         </div>

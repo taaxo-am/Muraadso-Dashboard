@@ -1,26 +1,30 @@
 import React, {useEffect, useState} from 'react';
-import {ErrorMessage, Field, Form, Formik} from "formik";
+import {connect, ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yub from 'yup'
 import './styles.css'
-import QuickDetails from "../../../components/QuickDetails";
-import {Route} from "react-router-dom";
 
 const initialState = {
     name: '',
     phone: '',
     sender: '',
-    service: '1'
+    service: '1',
+    identity: '',
+    identityType: '1',
+    photo: ''
 }
 
 const validationSchema = Yub.object({
     name: Yub.string().required('Required'),
     phone: Yub.string().required('Required'),
     sender: Yub.string().required('Required'),
-    service: Yub.string().required('Required')
+    identity: Yub.string().required('Required'),
+    identityType: Yub.string().required('Required'),
+    photo: Yub.string().required('Photo')
 })
 
 const Registration = () => {
 
+    const [showDhaxalSuge, setShowDhaxalSuge] = useState(false)
     const [nextForm, setNextForm] = useState(false)
 
     const toggleForms = () => {
@@ -38,10 +42,12 @@ const Registration = () => {
 
     return (
         <>
-            <div className="col-lg-8 col-md-12 p-4">
+            <div className="p-4">
                 <div className='d-flex flex-column flex-md-row w-100 m-0'>
+
+                    {/* Form 1 */}
                     <Formik initialValues={initialState} validationSchema={validationSchema} onSubmit={onSubmitForm1}>
-                        <div className={`card w-100 shadow-sm mh-100 p-0 ${nextForm && 'card-disabled'}`}>
+                        <div className={`card w-100 shadow-sm h-auto p-0 ${nextForm && 'card-disabled'}`}>
                             <div className='card-header'>Ka Qabashada P1</div>
                             <div className='card-body'>
                                 <Form className='pl-4 pr-4'>
@@ -50,41 +56,43 @@ const Registration = () => {
                                             <label htmlFor="name">Name :</label>
                                             <ErrorMessage name='name'>
                                                 {error => {
-                                                    return <span className='mt-1 text-danger'>{error} *</span>
+                                                    return <span className='text-danger'>{error} *</span>
                                                 }}
                                             </ErrorMessage>
                                         </div>
                                         <Field className='form-control' id='name' name='name' type='text'/>
                                     </div>
 
-                                    <div className='form-group'>
-                                        <div className='d-flex justify-content-between'>
-                                            <label htmlFor="phone">Phone Number :</label>
-                                            <ErrorMessage name='phone'>
-                                                {error => {
-                                                    return <span
-                                                        className='mt-1 text-right text-danger'>{error} *</span>
-                                                }}
-                                            </ErrorMessage>
-                                        </div>
-                                        <div className="input-group p-0">
-                                            <div className='input-group-prepend'>
-                                                <div className="input-group-text">+252</div>
+                                    <div className='row'>
+                                        <div className='form-group col'>
+                                            <div className='d-flex justify-content-between align-items-start'>
+                                                <label htmlFor="phone">Phone No:</label>
+                                                <ErrorMessage name='phone'>
+                                                    {error => {
+                                                        return <span
+                                                            className='text-right text-danger'>{error} *</span>
+                                                    }}
+                                                </ErrorMessage>
                                             </div>
-                                            <Field name='phone' className='form-control' id='phone' type='phone'/>
+                                            <div className="input-group p-0">
+                                                <div className='input-group-prepend'>
+                                                    <div className="input-group-text">+252</div>
+                                                </div>
+                                                <Field name='phone' className='form-control' id='phone' type='phone'/>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div className="form-group">
-                                        <div className='d-flex justify-content-between'>
-                                            <label htmlFor="received_by">Received By :</label>
-                                            <ErrorMessage name='sender'>
-                                                {error => {
-                                                    return <span className='mt-1 text-danger'>{error} *</span>
-                                                }}
-                                            </ErrorMessage>
+                                        <div className="form-group col">
+                                            <div className='d-flex justify-content-between'>
+                                                <label htmlFor="received_by">Receiver:</label>
+                                                <ErrorMessage name='sender'>
+                                                    {error => {
+                                                        return <span className='text-danger'>{error} *</span>
+                                                    }}
+                                                </ErrorMessage>
+                                            </div>
+                                            <Field name='sender' className='form-control' id='received_by' type='text'/>
                                         </div>
-                                        <Field name='sender' className='form-control' id='received_by' type='text'/>
                                     </div>
 
                                     <div className='form-group'>
@@ -92,7 +100,7 @@ const Registration = () => {
                                             <label htmlFor="service">Service :</label>
                                             <ErrorMessage name='service'>
                                                 {error => {
-                                                    return <span className='mt-1 text-danger'>{error} *</span>
+                                                    return <span className='text-danger'>{error} *</span>
                                                 }}
                                             </ErrorMessage>
                                         </div>
@@ -105,7 +113,52 @@ const Registration = () => {
                                         </Field>
                                     </div>
 
-                                    <div className='d-flex justify-content-center mt-5'>
+                                    <div className='d-flex justify-content-between align-items-end w-100'>
+                                        <div className='form-group'>
+                                            <div className='d-flex justify-content-between'>
+                                                <label htmlFor="identity">National ID :</label>
+                                                <ErrorMessage name='identity'>
+                                                    {error => {
+                                                        return <span className='text-danger'>{error} *</span>
+                                                    }}
+                                                </ErrorMessage>
+                                            </div>
+                                            <Field disabled={initialState.identityType === '2'} name='identity' className='form-control' id='identity' type='text'/>
+                                        </div>
+
+                                        <div className='form-group ml-4'>
+                                            <HandleFieldChange name="identityType" onChange={value => {
+                                                setShowDhaxalSuge(value === '2');
+                                            }}
+                                            />
+                                            <Field component='select' name='identityType'
+                                                   className='form-control'
+                                                   id='identityType'>
+                                                <option value='1'>National ID</option>
+                                                <option value='2'>Telesom Dh. Suge</option>
+                                            </Field>
+                                        </div>
+                                    </div>
+
+
+                                    <div className="form-group">
+                                        <div className='d-flex justify-content-between'>
+                                            <label htmlFor="photo">Upload Photo :</label>
+                                            <ErrorMessage name='photo'>
+                                                {error => {
+                                                    return <span className='text-danger'>{error} *</span>
+                                                }}
+                                            </ErrorMessage>
+                                        </div>
+                                        <div className="custom-file mb-3">
+                                            <Field type="file" className="custom-file-input" id="photo" name='name'/>
+                                            <label className="custom-file-label" htmlFor="validatedCustomFile">Choose
+                                                file...</label>
+                                            <div className="invalid-feedback">Example invalid custom file feedback</div>
+                                        </div>
+                                    </div>
+
+                                    <div className='d-flex justify-content-center my-3'>
                                         <button className='btn btn-danger' type='submit'>Save & Next</button>
                                         <button className='btn btn-outline-warning ml-4' type='reset'>Reset</button>
                                     </div>
@@ -114,7 +167,37 @@ const Registration = () => {
                         </div>
                     </Formik>
 
-                    <div className={`card w-100 ml-md-4 mt-sm-4 mt-md-0 shadow-sm mh-100 p-0 ${!nextForm && 'card-disabled'}`}>
+
+                    {/* Form 2 */}
+                    <div
+                        className={`card w-100 ml-md-4 mt-sm-4 mt-md-0 shadow-sm h-auto p-0 d-none ${showDhaxalSuge && 'd-block'}`}>
+                        <div className='card-header'>Ka Qabashada P2</div>
+                        <div className='card-body'>
+                            <form>
+                                <div className='form-group'>
+                                    <input className='form-control' placeholder='Magaca Dh. Sugaha 1aad'/>
+                                </div>
+                                <div className='form-group'>
+                                    <input className='form-control' placeholder='Numberka Dh. Sugaha 1aad'/>
+                                </div>
+                                <div className='form-group'>
+                                    <input className='form-control' placeholder='Magaca Dh. Sugaha 2aad'/>
+                                </div>
+                                <div className='form-group'>
+                                    <input className='form-control' placeholder='Numberka Dh. Sugaha 2aad'/>
+                                </div>
+
+                                <div className='d-flex justify-content-center my-3'>
+                                    <button className='btn btn-danger' type='submit'>Save</button>
+                                    <button className='btn btn-outline-warning ml-4' type='reset'>Reset</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    {/* Form 3 */}
+                    <div
+                        className={`card w-100 ml-md-4 mt-sm-4 mt-md-0 shadow-sm h-auto p-0 ${!nextForm && 'card-disabled'}`}>
                         <div className='card-header'>Ka Qabashada P2</div>
                         <div className='card-body'>
                             <form className='pl-4 pr-4'>
@@ -150,15 +233,6 @@ const Registration = () => {
                                                 <input className='form-control' id='price' type='number'/>
                                             </div>
                                         </div>
-                                        {/*{*/}
-                                        {/*    service === '2' &&*/}
-                                        {/*    (*/}
-                                        {/*        <div className="form-group flex-grow-1 ml-4">*/}
-                                        {/*            <label htmlFor="commission">Commission :</label>*/}
-                                        {/*            <input className='form-control' id='commission' type='text'/>*/}
-                                        {/*        </div>*/}
-                                        {/*    )*/}
-                                        {/*}*/}
                                     </div>
                                 </div>
 
@@ -173,12 +247,23 @@ const Registration = () => {
                 </div>
 
             </div>
-
-            <div className="col-lg-4 col-md-12 p-4">
-                <QuickDetails/>
-            </div>
         </>
-    );
+    )
 };
+
+const HandleFieldChange = connect(
+    ({
+         name,
+         formik: {
+             values: {[name]: value},
+         },
+         onChange,
+     }) => {
+        useEffect(() => {
+            onChange(value);
+        }, [onChange, value]);
+        return null;
+    }
+);
 
 export default Registration;

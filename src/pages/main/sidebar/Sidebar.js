@@ -14,6 +14,7 @@ const Sidebar = ({sidebar}) => {
                         sidebar.current.classList.remove('shown')
                     }}/>
                 </div>
+
                 <NavLink className='link mt-2' to='/main/home' onClick={() => {
                     sidebar.current.classList.remove('shown')
                 }}>
@@ -56,6 +57,13 @@ const Sidebar = ({sidebar}) => {
                 }}>
                     <i className="fa fa-store"/>
                     <p>Ka Iibsashada</p>
+                </NavLink>
+
+                <NavLink className='link' to='/main/more' onClick={() => {
+                    sidebar.current.classList.remove('shown')
+                }}>
+                    <i className="fa fa-shapes"/>
+                    <p>More</p>
                 </NavLink>
 
                 <NavLink className='link' to='/main/admin' onClick={() => {

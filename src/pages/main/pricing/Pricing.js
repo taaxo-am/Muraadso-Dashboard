@@ -8,10 +8,11 @@ const Pricing = () => {
 
     return (
             <div className="col-12 p-md-4 p-3 pt-4">
-                <div>
+                <div className='d-flex'>
                     <button className='btn btn-danger' data-toggle="modal" data-target="#pricingModal">Insert New
                         Pricing
                     </button>
+                    <input type="text" className='ml-4 w-50 form-control' placeholder='Search...'/>
                 </div>
 
                 <div className='card mt-4 shadow-sm'>
